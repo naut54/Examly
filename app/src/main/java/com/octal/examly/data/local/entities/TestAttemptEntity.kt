@@ -23,6 +23,8 @@ data class TestAttemptEntity(
 
     val assignmentId: Int,
 
+    val userId: Int,
+
     val startedAt: Long,
 
     val completedAt: Long?,

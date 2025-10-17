@@ -10,7 +10,6 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insert(user: UserEntity): Long
 
-
     @Query("SELECT * FROM users ORDER BY createdAt DESC")
     fun getAll(): Flow<List<UserEntity>>
 
@@ -20,10 +19,8 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE username = :username")
     suspend fun getByUsername(username: String): UserEntity?
 
-
     @Update
     suspend fun update(user: UserEntity): Int
-
 
     @Delete
     suspend fun delete(user: UserEntity): Int

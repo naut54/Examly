@@ -28,13 +28,13 @@ import androidx.room.PrimaryKey
 )
 data class TestEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
 
     val title: String,
 
     val description: String,
 
-    val subjectId: Int,
+    val subjectId: Long,
 
     val mode: String, // "FIXED" o "RANDOM"
 

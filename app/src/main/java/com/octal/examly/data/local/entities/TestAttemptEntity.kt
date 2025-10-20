@@ -19,11 +19,11 @@ import androidx.room.PrimaryKey
 )
 data class TestAttemptEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
 
-    val assignmentId: Int,
+    val assignmentId: Long,
 
-    val userId: Int,
+    val userId: Long,
 
     val startedAt: Long,
 

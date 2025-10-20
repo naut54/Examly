@@ -19,9 +19,9 @@ import androidx.room.PrimaryKey
 )
 data class AnswerEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
 
-    val questionId: Int,
+    val questionId: Long,
 
     val answerText: String,
 

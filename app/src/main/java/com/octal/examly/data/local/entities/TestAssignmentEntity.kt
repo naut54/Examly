@@ -37,13 +37,13 @@ import androidx.room.PrimaryKey
 )
 data class TestAssignmentEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
 
-    val testId: Int,
+    val testId: Long,
 
-    val userId: Int,
+    val userId: Long,
 
-    val assignedBy: Int?,
+    val assignedBy: Long?,
 
     val assignedAt: Long,
 

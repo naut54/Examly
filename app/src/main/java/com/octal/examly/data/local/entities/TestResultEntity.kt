@@ -37,13 +37,13 @@ import androidx.room.PrimaryKey
 )
 data class TestResultEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
 
-    val attemptId: Int,
+    val attemptId: Long,
 
-    val userId: Int,
+    val userId: Long,
 
-    val testId: Int,
+    val testId: Long,
 
     val score: Double,
 
@@ -53,7 +53,7 @@ data class TestResultEntity(
 
     val wrongAnswers: Int,
 
-    val timeSpent: Int?,
+    val timeSpent: Long?,
 
     val mode: String,
 

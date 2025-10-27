@@ -9,8 +9,8 @@ class AssignTestToUsersUseCase @Inject constructor(
     suspend operator fun invoke(
         testId: Long,
         userIds: List<Long>,
-        assignedBy: Long,
-        deadline: Long? = null
+        deadline: Long? = null,
+        assignedBy: Long? = null
     ): Result<List<Long>> {
         if (testId <= 0) {
             return Result.failure(Exception("ID de test inválido"))
@@ -18,10 +18,7 @@ class AssignTestToUsersUseCase @Inject constructor(
         if (userIds.isEmpty()) {
             return Result.failure(Exception("Debe seleccionar al menos un usuario"))
         }
-        if (assignedBy <= 0) {
-            return Result.failure(Exception("ID de asignador inválido"))
-        }
-
-        return testAssignmentRepository.assignTest(testId, userIds, assignedBy, deadline)
+        val normalizedDeadline = deadline?.let { if (it <= 0L) null else it }
+        return testAssignmentRepository.assignTest(testId, userIds, assignedBy, normalizedDeadline)
     }
 }

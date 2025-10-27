@@ -12,14 +12,34 @@ class StartTestAttemptUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(
         assignmentId: Long,
+        testId: Long,
         userId: Long,
         mode: TestAttemptMode
     ): Result<Long> {
         if (assignmentId <= 0) {
             return Result.failure(Exception("ID de asignación inválido"))
         }
+        if (testId <= 0) {
+            return Result.failure(Exception("ID de test inválido"))
+        }
         if (userId <= 0) {
             return Result.failure(Exception("ID de usuario inválido"))
+        }
+
+        // Fetch test configuration to initialize timer when applicable
+        val timeRemainingSeconds: Int? = try {
+            val testResult = testRepository.getTestById(testId)
+            testResult.getOrNull()?.let { test ->
+                val hasTimer = test.configuration.hasTimer // default false if not set
+                val minutes = test.configuration.timeLimit
+                if (hasTimer && minutes != null && minutes > 0) {
+                    minutes * 60
+                } else {
+                    null
+                }
+            }
+        } catch (_: Exception) {
+            null
         }
 
         val attempt = TestAttempt(
@@ -32,7 +52,7 @@ class StartTestAttemptUseCase @Inject constructor(
             mode = mode,
             currentQuestionIndex = 0,
             isPaused = false,
-            timeRemaining = null
+            timeRemaining = timeRemainingSeconds
         )
 
         return testAttemptRepository.startAttempt(attempt)

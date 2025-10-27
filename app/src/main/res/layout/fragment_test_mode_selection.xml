@@ -84,16 +84,6 @@
                 app:layout_constraintStart_toEndOf="@+id/ivFixedIcon"
                 app:layout_constraintTop_toBottomOf="@+id/tvFixedTitle" />
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
-                android:text="@string/test_mode_selection_recommended"
-                android:textColor="?attr/colorPrimary"
-                app:chipBackgroundColor="@color/chip_bg_primary"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivFixedIcon" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

@@ -2,8 +2,11 @@ package com.octal.examly.di
 
 import android.content.Context
 import androidx.room.Room
+import com.octal.examly.data.local.PreferencesManager
 import com.octal.examly.data.local.dao.*
+import com.octal.examly.data.local.database.DatabaseSeeder
 import com.octal.examly.data.local.database.ExamDatabase
+import com.octal.examly.util.PasswordHasher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -85,5 +88,20 @@ object DatabaseModule {
     @Singleton
     fun provideTestResultDao(database: ExamDatabase): TestResultDao {
         return database.testResultDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDatabaseSeeder(
+        userDao: UserDao,
+        passwordHasher: PasswordHasher
+    ): DatabaseSeeder {
+        return DatabaseSeeder(userDao, passwordHasher)
+    }
+
+    @Provides
+    @Singleton
+    fun providePreferencesManager(@ApplicationContext context: Context): PreferencesManager {
+        return PreferencesManager(context)
     }
 }

@@ -12,7 +12,7 @@ interface AnswerDao {
     suspend fun insertAll(answers: List<AnswerEntity>): List<Long>
 
     @Query("SELECT * FROM answers WHERE questionId = :questionId")
-    suspend fun getByQuestionId(questionId: Int): List<AnswerEntity>
+    suspend fun getByQuestionId(questionId: Long): List<AnswerEntity>
 
     @Query("SELECT * FROM answers WHERE questionId = :questionId AND isCorrect = 1")
     suspend fun getCorrectAnswersByQuestionId(questionId: Int): List<AnswerEntity>

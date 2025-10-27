@@ -48,14 +48,29 @@ class ResultRepositoryImpl @Inject constructor(
 
     override suspend fun getMetricsBySubject(subjectId: Long, userId: Long?): Result<Map<String, Any>> {
         return try {
-            // Aquí implementarías la lógica para calcular métricas
-            // Por ahora retornamos un mapa vacío como ejemplo
+            val results = if (userId != null) {
+                testResultDao.getResultsBySubjectAndUser(subjectId, userId)
+            } else {
+                testResultDao.getResultsBySubjectId(subjectId)
+            }
+
+            val total = results.size
+            val average = if (total > 0) {
+                results.map { it.score }.average()
+            } else {
+                0.0
+            }
+
+            val passed = results.count { it.score >= 50.0 }
+            val failed = results.count { it.score < 50.0 }
+
             val metrics = mapOf(
-                "average" to 0.0,
-                "total" to 0,
-                "passed" to 0,
-                "failed" to 0
+                "average" to average,
+                "total" to total,
+                "passed" to passed,
+                "failed" to failed
             )
+
             Result.success(metrics)
         } catch (e: Exception) {
             Result.failure(Exception("Error al calcular métricas: ${e.message}", e))
@@ -64,13 +79,25 @@ class ResultRepositoryImpl @Inject constructor(
 
     override suspend fun getMetricsByUser(userId: Long): Result<Map<String, Any>> {
         return try {
-            // Aquí implementarías la lógica para calcular métricas del usuario
+            val results = testResultDao.getResultsByUserId(userId)
+
+            val total = results.size
+            val average = if (total > 0) {
+                results.map { it.score }.average()
+            } else {
+                0.0
+            }
+
+            val passed = results.count { it.score >= 50.0 }
+            val failed = results.count { it.score < 50.0 }
+
             val metrics = mapOf(
-                "average" to 0.0,
-                "total" to 0,
-                "passed" to 0,
-                "failed" to 0
+                "average" to average,
+                "total" to total,
+                "passed" to passed,
+                "failed" to failed
             )
+
             Result.success(metrics)
         } catch (e: Exception) {
             Result.failure(Exception("Error al calcular métricas: ${e.message}", e))

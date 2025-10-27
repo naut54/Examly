@@ -8,6 +8,7 @@
     tools:context=".presentation.ui.fragment.user.TestSummaryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_medium">
@@ -344,19 +345,85 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStartTest"
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/tvSubject"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_large"
-            android:paddingVertical="@dimen/padding_medium"
-            android:text="@string/test_summary_start_test"
-            android:textSize="@dimen/text_size_button"
-            app:icon="@drawable/ic_play"
-            app:iconGravity="textStart"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardTestInfo"
+            tools:text="Subject" />
+
+        <TextView
+            android:id="@+id/tvAssignedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubject"
+            tools:text="Assigned: 21/10/2025 10:00" />
+
+        <TextView
+            android:id="@+id/tvDeadlineWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAssignedDate"
+            tools:text="Deadline approaching" />
+
+        <LinearLayout
+            android:id="@+id/layoutContinueInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardModeSelection" />
+            app:layout_constraintTop_toBottomOf="@+id/cardModeSelection">
+
+            <TextView
+                android:id="@+id/tvContinueProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Progress: 5/20" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingVertical="@dimen/padding_medium"
+            android:text="@string/start"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/layoutContinueInfo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinueTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingVertical="@dimen/padding_medium"
+            android:text="@string/continue_test"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/btnStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/back"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/btnContinueTest"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ProgressBar
             android:id="@+id/progressBar"

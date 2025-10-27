@@ -46,7 +46,7 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override fun getCurrentUser(): Flow<User?> {
-        return sessionManager.getUser()
+        return sessionManager.getUserFlow()
     }
 
     override suspend fun isLoggedIn(): Boolean {

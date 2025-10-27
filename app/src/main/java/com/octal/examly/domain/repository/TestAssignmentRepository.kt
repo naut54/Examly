@@ -7,7 +7,7 @@ interface TestAssignmentRepository {
     suspend fun assignTest(
         testId: Long,
         userIds: List<Long>,
-        assignedBy: Long,
+        assignedBy: Long? = null,
         deadline: Long? = null
     ): Result<List<Long>>
 

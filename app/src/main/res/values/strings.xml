@@ -1,3 +1,560 @@
 <resources>
     <string name="app_name">Examly</string>
+
+    <string name="ok">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Eliminar</string>
+    <string name="edit">Editar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="back">Atrás</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+    <string name="submit">Enviar</string>
+    <string name="exit">Salir</string>
+    <string name="retry">Reintentar</string>
+    <string name="refresh">Actualizar</string>
+    <string name="search">Buscar</string>
+    <string name="filter">Filtrar</string>
+    <string name="clear">Limpiar</string>
+    <string name="apply">Aplicar</string>
+    <string name="close">Cerrar</string>
+
+    <string name="login">Iniciar sesión</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="welcome_back">Bienvenido de nuevo</string>
+    <string name="sign_in_to_continue">Inicia sesión para continuar</string>
+
+    <string name="user">Usuario</string>
+    <string name="admin">Administrador</string>
+    <string name="role">Rol</string>
+    <string name="select_role">Seleccionar rol</string>
+
+    <string name="home">Inicio</string>
+    <string name="tests">Exámenes</string>
+    <string name="results">Resultados</string>
+    <string name="settings">Ajustes</string>
+    <string name="profile">Perfil</string>
+    <string name="metrics">Métricas</string>
+    <string name="navigate">Navegar</string>
+    <string name="quick_actions">Acciones rápidas</string>
+    <string name="recent_activity">Actividad reciente</string>
+    <string name="my_results">Mis resultados</string>
+    <string name="no_recent_activity">No hay actividad reciente</string>
+
+    <string name="test">Examen</string>
+    <string name="test_list">Lista de exámenes</string>
+    <string name="my_tests">Mis exámenes</string>
+    <string name="available_tests">Exámenes disponibles</string>
+    <string name="create_test">Crear examen</string>
+    <string name="test_title">Título del examen</string>
+    <string name="test_description">Descripción del examen</string>
+    <string name="start_test">Comenzar examen</string>
+    <string name="continue_test">Continuar examen</string>
+    <string name="resume_test">Reanudar examen</string>
+    <string name="submit_test">Enviar examen</string>
+    <string name="exit_test">Salir del examen</string>
+    <string name="test_summary">Resumen del examen</string>
+    <string name="test_mode">Modo de examen</string>
+    <string name="test_configuration">Configuración del examen</string>
+    <string name="assign_test">Asignar examen</string>
+    <string name="select_test">Seleccionar examen</string>
+    <string name="select_test_title">Selecciona un examen</string>
+    <string name="select_test_search_hint">Buscar exámenes…</string>
+    <string name="select_test_no_tests">No hay exámenes disponibles</string>
+    <string name="select_test_no_tests_subtitle">Crea un examen primero para asignarlo</string>
+    <string name="select_users_title">Seleccionar usuarios</string>
+
+    <string name="test_execution_previous">Anterior</string>
+    <string name="test_execution_next">Siguiente</string>
+    <string name="test_execution_submit">Enviar examen</string>
+    <string name="test_execution_exit">Salir del examen</string>
+    <string name="error_attempt_not_found">No se pudo reanudar el examen. Intento no encontrado.</string>
+
+    <string name="fixed_mode">Modo fijo</string>
+    <string name="random_mode">Modo aleatorio</string>
+    <string name="practice_mode">Modo de práctica</string>
+    <string name="exam_mode">Modo de examen</string>
+    <string name="exam">Examen</string>
+    <string name="practice">Práctica</string>
+    <string name="practice_and_exam">Práctica y examen</string>
+    <string name="exam_only">Solo examen</string>
+
+    <string name="question">Pregunta</string>
+    <string name="questions">Preguntas</string>
+    <string name="question_number">Pregunta %1$d</string>
+    <string name="questions_count">%1$d preguntas</string>
+    <string name="create_question">Crear pregunta</string>
+    <string name="question_text">Texto de la pregunta</string>
+    <string name="question_type">Tipo de pregunta</string>
+    <string name="single_choice">Opción única</string>
+    <string name="multiple_choice">Opción múltiple</string>
+    <string name="question_image">Imagen de la pregunta</string>
+    <string name="add_image">Añadir imagen</string>
+    <string name="remove_image">Quitar imagen</string>
+    <string name="number_of_questions">Número de preguntas</string>
+
+    <string name="answer">Respuesta</string>
+    <string name="answers">Respuestas</string>
+    <string name="answer_option">Opción de respuesta</string>
+    <string name="correct_answer">Respuesta correcta</string>
+    <string name="add_answer">Añadir respuesta</string>
+    <string name="explanation">Explicación</string>
+    <string name="explanation_optional">Explicación (Opcional)</string>
+    <string name="answered">Respondidas</string>
+    <string name="unanswered">Sin responder</string>
+    <string name="answered_questions">Respondidas: %1$d / %2$d</string>
+    <string name="unanswered_questions">Sin responder: %1$d</string>
+    <string name="answer_status">Estado de la respuesta</string>
+
+    <string name="subject">Asignatura</string>
+    <string name="subjects">Asignaturas</string>
+    <string name="create_subject">Crear asignatura</string>
+    <string name="subject_name">Nombre de la asignatura</string>
+    <string name="select_subject">Seleccionar asignatura</string>
+    <string name="subject_icon">Icono de la asignatura</string>
+
+    <string name="users">Usuarios</string>
+    <string name="create_user">Crear usuario</string>
+    <string name="select_users">Seleccionar usuarios</string>
+    <string name="user_name">Nombre de usuario</string>
+    <string name="user_icon">Icono de usuario</string>
+    <string name="user_avatar">Avatar de usuario</string>
+    <string name="all_users">Todos los usuarios</string>
+    <string name="specific_user">Usuario específico</string>
+    <string name="active_users">Usuarios activos</string>
+
+    <string name="select_users_select_all">Seleccionar todos</string>
+    <string name="select_users_search_hint">Buscar usuarios…</string>
+    <string name="select_users_all">Todos</string>
+    <string name="select_users_users_only">Solo usuarios</string>
+    <string name="select_users_no_users">No se encontraron usuarios</string>
+    <string name="select_users_no_users_subtitle">Crea usuarios primero para asignar exámenes</string>
+    <string name="select_users_confirm">Confirmar selección</string>
+
+    <string name="create_user_title">Crear nuevo usuario</string>
+    <string name="create_user_description">Añadir un nuevo usuario al sistema</string>
+    <string name="create_user_username_hint">Nombre de usuario</string>
+    <string name="create_user_username_helper">Introduce un nombre de usuario único</string>
+    <string name="create_user_password_hint">Contraseña</string>
+    <string name="create_user_password_helper">Mínimo 6 caracteres</string>
+    <string name="create_user_confirm_password_hint">Confirmar contraseña</string>
+    <string name="create_user_role_title">Seleccionar rol de usuario</string>
+    <string name="create_user_role_description">Elige el rol para este usuario</string>
+    <string name="create_user_role_user">Usuario</string>
+    <string name="create_user_role_user_description">Puede hacer exámenes y ver resultados</string>
+    <string name="create_user_role_admin">Administrador</string>
+    <string name="create_user_role_admin_description">Puede crear exámenes y gestionar usuarios</string>
+    <string name="create_user_create">Crear usuario</string>
+
+    <string name="result">Resultado</string>
+    <string name="test_result">Resultado del examen</string>
+    <string name="view_results">Ver resultados</string>
+    <string name="result_details">Detalles del resultado</string>
+    <string name="score">Puntuación</string>
+    <string name="total_score">Puntuación total</string>
+    <string name="correct">Correctas</string>
+    <string name="wrong">Incorrectas</string>
+    <string name="passed">Aprobado</string>
+    <string name="failed">Suspenso</string>
+    <string name="pass_rate">Tasa de aprobados</string>
+    <string name="test_history">Historial de exámenes</string>
+    <string name="sort">Ordenar</string>
+    <string name="no_results">Sin resultados</string>
+    <string name="no_results_yet">Aún no hay resultados</string>
+    <string name="complete_test_to_see_results">Completa un examen para ver tus resultados aquí</string>
+
+    <string name="statistics">Estadísticas</string>
+    <string name="total">Total</string>
+    <string name="total_tests">Exámenes totales: %1$d</string>
+    <string name="total_questions">Preguntas totales</string>
+    <string name="average_score">Puntuación media</string>
+    <string name="overall_statistics">Estadísticas generales</string>
+    <string name="performance_chart">Gráfico de rendimiento</string>
+    <string name="detailed_breakdown">Desglose detallado</string>
+    <string name="metric_icon">Icono de métrica</string>
+
+    <string name="time">Tiempo</string>
+    <string name="timer">Temporizador</string>
+    <string name="time_limit">Límite de tiempo</string>
+    <string name="time_limit_minutes">%1$d minutos</string>
+    <string name="time_spent">Tiempo empleado</string>
+    <string name="time_remaining">Tiempo restante: %1$s</string>
+    <string name="deadline">Fecha límite</string>
+    <string name="date">Fecha</string>
+    <string name="from_date">Desde la fecha</string>
+    <string name="to_date">Hasta la fecha</string>
+    <string name="date_range">Rango de fechas</string>
+
+    <string name="status">Estado</string>
+    <string name="pending">Pendiente</string>
+    <string name="in_progress">En progreso</string>
+    <string name="completed">Completado</string>
+    <string name="cancelled">Cancelado</string>
+
+    <string name="filters">Filtros</string>
+    <string name="apply_filters">Aplicar filtros</string>
+    <string name="clear_filters">Limpiar filtros</string>
+    <string name="clear_all">Limpiar todo</string>
+    <string name="more_filters">Más filtros</string>
+    <string name="by_subject">Por asignatura</string>
+    <string name="all">Todos</string>
+
+    <string name="description">Descripción</string>
+    <string name="no_description">No hay descripción disponible</string>
+
+    <string name="loading">Cargando…</string>
+    <string name="error">Error</string>
+    <string name="success">Éxito</string>
+    <string name="no_data">No hay datos disponibles</string>
+    <string name="no_tests">No hay exámenes</string>
+    <string name="no_tests_available">No hay exámenes disponibles</string>
+    <string name="no_results_found">No se encontraron resultados</string>
+    <string name="no_questions_available">No hay preguntas disponibles</string>
+
+    <string name="confirm_action">Confirmar acción</string>
+    <string name="confirm_message">¿Estás seguro de que quieres continuar?</string>
+    <string name="confirm_delete">¿Estás seguro de que quieres eliminar este elemento?</string>
+    <string name="confirm_logout">¿Estás seguro de que quieres cerrar sesión?</string>
+    <string name="exit_test_warning">¿Estás seguro de que quieres salir? Tu progreso se guardará.</string>
+    <string name="exit_test_warning_message">Tu progreso se perderá si sales sin guardar. Asegúrate de guardar antes de salir.</string>
+    <string name="submit_test_message">¿Estás seguro de que quieres enviar el examen? No podrás cambiar tus respuestas.</string>
+    <string name="unanswered_warning">Tienes preguntas sin responder. ¿Estás seguro de que quieres enviar?</string>
+
+    <string name="progress">Progreso</string>
+    <string name="current_progress">Pregunta %1$d de %2$d</string>
+    <string name="question_progress">Pregunta %1$d de %2$d</string>
+    <string name="progress_percentage">%1$d%%</string>
+
+    <string name="dark_mode">Modo oscuro</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="language">Idioma</string>
+    <string name="spanish">Español</string>
+    <string name="about">Acerca de</string>
+    <string name="version">Versión</string>
+    <string name="account">Cuenta</string>
+    <string name="preferences">Preferencias</string>
+    <string name="app_version">Versión de la app</string>
+    <string name="help">Ayuda</string>
+
+    <string name="admin_panel">Panel de administrador</string>
+    <string name="admin_home">Inicio de administrador</string>
+    <string name="admin_dashboard">Panel de administrador</string>
+    <string name="manage_users">Gestionar usuarios</string>
+    <string name="manage_tests">Gestionar exámenes</string>
+    <string name="manage_subjects">Gestionar asignaturas</string>
+    <string name="manage_questions">Gestionar preguntas</string>
+
+    <string name="dialog_icon">Icono de diálogo</string>
+    <string name="warning">Advertencia</string>
+    <string name="review">Revisar</string>
+
+    <string name="test_icon">Icono de examen</string>
+    <string name="chart_placeholder">El gráfico se mostrará aquí</string>
+    <string name="trend">Tendencia</string>
+
+    <string name="menu_icon">Menú</string>
+    <string name="back_button">Botón de retroceso</string>
+    <string name="logo">Logo de la app</string>
+    <string name="app_logo">Logo de Examly</string>
+
+    <string name="login_title">Iniciar sesión</string>
+    <string name="login_subtitle">Introduce tus credenciales para acceder a tu cuenta</string>
+
+    <string name="app_tagline">Domina tu conocimiento</string>
+
+    <string name="admin_home_welcome">Bienvenido, Administrador</string>
+    <string name="admin_home_subtitle">Gestiona exámenes, usuarios y supervisa el rendimiento</string>
+    <string name="admin_home_quick_actions">Acciones rápidas</string>
+    <string name="admin_home_create_test">Crear examen</string>
+    <string name="admin_home_create_question">Crear pregunta</string>
+    <string name="admin_home_create_user">Crear usuario</string>
+    <string name="admin_home_create_subject">Crear asignatura</string>
+    <string name="admin_home_overview">Visión general</string>
+    <string name="admin_home_users">Usuarios</string>
+    <string name="admin_home_tests">Exámenes</string>
+    <string name="admin_home_subjects">Asignaturas</string>
+    <string name="admin_home_questions">Preguntas</string>
+    <string name="admin_home_view_metrics">Ver métricas</string>
+    <string name="mode">Modo</string>
+
+    <string name="assign_test_title">Asignar examen</string>
+    <string name="assign_test_description">Selecciona un examen y usuarios para asignar</string>
+    <string name="assign_test_select_test">Seleccionar examen</string>
+    <string name="assign_test_no_test_selected">Ningún examen seleccionado</string>
+    <string name="assign_test_select_users">Seleccionar usuarios</string>
+    <string name="assign_test_no_users_selected">Ningún usuario seleccionado</string>
+    <string name="assign_test_deadline_title">Fecha límite (Opcional)</string>
+    <string name="assign_test_set_deadline">Establecer fecha límite</string>
+    <string name="assign_test_select_date">Seleccionar fecha</string>
+    <string name="assign_test_select_time">Seleccionar hora</string>
+    <string name="assign_test_assign">Asignar examen</string>
+
+    <string name="create_test_title">Crear nuevo examen</string>
+    <string name="create_test_basic_info">Información básica</string>
+    <string name="create_test_name_hint">Nombre del examen</string>
+    <string name="create_test_description_hint">Descripción del examen</string>
+    <string name="create_test_subject_hint">Seleccionar asignatura</string>
+    <string name="create_test_mode_title">Seleccionar modo de examen</string>
+    <string name="create_test_mode_description">Elige cómo se seleccionarán las preguntas para este examen</string>
+    <string name="create_test_fixed_mode">Modo fijo</string>
+    <string name="create_test_fixed_mode_description">Seleccionar preguntas específicas manualmente</string>
+    <string name="create_test_random_mode">Modo aleatorio</string>
+    <string name="create_test_random_mode_description">Preguntas seleccionadas aleatoriamente de la asignatura</string>
+    <string name="create_test_next">Siguiente</string>
+
+    <string name="test_configuration_title">Configuración del examen</string>
+    <string name="test_configuration_description">Configurar los ajustes y opciones del examen</string>
+    <string name="test_configuration_settings">Ajustes de configuración</string>
+    <string name="test_configuration_mode_settings">Ajustes de modo</string>
+    <string name="test_configuration_practice_mode">Habilitar modo de práctica</string>
+    <string name="test_configuration_practice_mode_description">Permitir a los usuarios practicar con retroalimentación inmediata</string>
+    <string name="test_configuration_timer_settings">Ajustes del temporizador</string>
+    <string name="test_configuration_enable_timer">Habilitar temporizador</string>
+    <string name="test_configuration_timer_description">Establecer un límite de tiempo para este examen</string>
+    <string name="test_configuration_minutes">Minutos</string>
+    <string name="test_configuration_time_limit_hint">Límite de tiempo (minutos)</string>
+    <string name="test_configuration_time_limit_helper">Introduce el límite de tiempo en minutos</string>
+    <string name="test_configuration_summary">Resumen de configuración</string>
+    <string name="test_configuration_create_test">Crear examen</string>
+
+    <string name="test_fixed_setup_title">Seleccionar preguntas</string>
+    <string name="test_fixed_setup_add">Añadir preguntas</string>
+    <string name="test_fixed_setup_available">Preguntas disponibles</string>
+    <string name="test_fixed_setup_selected">Preguntas seleccionadas</string>
+    <string name="test_fixed_setup_no_questions">No hay preguntas seleccionadas</string>
+    <string name="test_fixed_setup_no_questions_subtitle">Añade preguntas a este examen</string>
+    <string name="test_fixed_setup_add_first">Añadir primera pregunta</string>
+    <string name="test_fixed_setup_next">Siguiente</string>
+
+    <string name="test_mode_selection_title">Seleccionar modo de examen</string>
+    <string name="test_mode_selection_description">Elige cómo se seleccionarán las preguntas</string>
+    <string name="test_mode_selection_fixed">Modo fijo</string>
+    <string name="test_mode_selection_fixed_description">Seleccionar preguntas específicas manualmente</string>
+    <string name="test_mode_selection_random">Modo aleatorio</string>
+    <string name="test_mode_selection_random_description">Preguntas seleccionadas aleatoriamente del banco</string>
+    <string name="test_mode_selection_recommended">Recomendado</string>
+    <string name="test_mode_selection_back">Atrás</string>
+
+    <string name="error_invalid_credentials">Nombre de usuario o contraseña incorrectos</string>
+    <string name="error_empty_fields">Por favor, rellena todos los campos obligatorios</string>
+    <string name="error_password_mismatch">Las contraseñas no coinciden</string>
+    <string name="error_network">Error de red. Por favor, comprueba tu conexión.</string>
+    <string name="error_loading_data">Error al cargar los datos</string>
+
+    <string name="success_login">Inicio de sesión exitoso</string>
+    <string name="success_logout">Cierre de sesión exitoso</string>
+    <string name="success_test_created">Examen creado con éxito</string>
+    <string name="success_test_submitted">Examen enviado con éxito</string>
+    <string name="success_user_created">Usuario creado con éxito</string>
+    <string name="success_subject_created">Asignatura creada con éxito</string>
+    <string name="success_question_created">Pregunta creada con éxito</string>
+
+    <string name="nav_home">Inicio</string>
+    <string name="nav_settings">Ajustes</string>
+    <string name="nav_results">Resultados</string>
+    <string name="nav_my_tests">Mis exámenes</string>
+    <string name="nav_test_summary">Resumen del examen</string>
+    <string name="nav_test_execution">Realización del examen</string>
+    <string name="nav_test_result">Resultado del examen</string>
+    <string name="nav_admin_dashboard">Panel de administrador</string>
+    <string name="nav_create_test">Crear examen</string>
+    <string name="nav_select_test_mode">Seleccionar modo de examen</string>
+    <string name="nav_fixed_test_setup">Configuración de examen fijo</string>
+    <string name="nav_random_test_setup">Configuración de examen aleatorio</string>
+    <string name="nav_test_configuration">Configuración del examen</string>
+    <string name="nav_assign_test">Asignar examen</string>
+    <string name="nav_select_test">Seleccionar examen</string>
+    <string name="nav_select_users">Seleccionar usuarios</string>
+    <string name="nav_create_user">Crear usuario</string>
+    <string name="nav_create_subject">Crear asignatura</string>
+    <string name="nav_create_question">Crear pregunta</string>
+    <string name="nav_metrics">Métricas</string>
+
+    <string name="percentage_symbol">%</string>
+
+    <string name="placeholder_test_title">Título del examen</string>
+    <string name="placeholder_subject">Asignatura</string>
+    <string name="placeholder_question_text">El texto de la pregunta va aquí</string>
+    <string name="placeholder_answer_text">Texto de la opción de respuesta</string>
+    <string name="placeholder_username">Nombre de usuario</string>
+    <string name="placeholder_subject_name">Nombre de la asignatura</string>
+    <string name="placeholder_subject_description">Descripción de la asignatura</string>
+    <string name="placeholder_metric_title">Título de la métrica</string>
+    <string name="placeholder_metric_subtitle">Subtítulo</string>
+
+    <string name="test_random_setup_title">Configuración de examen aleatorio</string>
+    <string name="test_random_setup_description">Crear un examen con preguntas seleccionadas aleatoriamente de las asignaturas elegidas</string>
+    <string name="test_random_setup_question_settings">Ajustes de preguntas</string>
+    <string name="test_random_setup_question_count_hint">Número de preguntas</string>
+    <string name="test_random_setup_question_count_helper">Total de preguntas a seleccionar aleatoriamente del banco</string>
+    <string name="test_random_setup_preview_title">Vista previa del examen</string>
+    <string name="test_random_setup_preview_icon">Icono de vista previa</string>
+    <string name="test_random_setup_preview_label">Las preguntas se seleccionarán aleatoriamente</string>
+    <string name="test_random_setup_preview_description">Las preguntas se seleccionarán aleatoriamente de las asignaturas elegidas cuando comience el examen</string>
+    <string name="test_random_setup_next">Siguiente</string>
+
+    <string name="test_result_statistics_title">Estadísticas</string>
+    <string name="test_result_correct_answers">Respuestas correctas</string>
+    <string name="test_result_wrong_answers">Respuestas incorrectas</string>
+    <string name="test_result_time_spent">Tiempo empleado</string>
+    <string name="test_result_completion_date">Fecha de finalización</string>
+    <string name="test_result_review_answers">Revisar respuestas</string>
+    <string name="test_result_back_to_list">Volver a la lista de exámenes</string>
+
+    <string name="test_summary_details_title">Detalles del examen</string>
+    <string name="test_summary_questions">Preguntas</string>
+    <string name="test_summary_time_limit">Límite de tiempo</string>
+    <string name="test_summary_deadline">Fecha límite</string>
+    <string name="test_summary_mode">Modo</string>
+    <string name="test_summary_select_mode">Seleccionar modo de examen</string>
+    <string name="test_summary_exam_mode">Modo de examen</string>
+    <string name="test_summary_exam_mode_description">Las respuestas se muestran solo después de enviar el examen</string>
+    <string name="test_summary_practice_mode">Modo de práctica</string>
+    <string name="test_summary_practice_mode_description">Ver retroalimentación inmediatamente después de cada pregunta</string>
+    <string name="test_summary_start_test">Comenzar examen</string>
+
+    <string name="total_questions_count">Preguntas totales: %1$d</string>
+    <string name="answered_count">Respondidas: %1$d</string>
+    <string name="unanswered_count">Sin responder: %1$d</string>
+    <string name="time_spent_label">Tiempo empleado: %1$s</string>
+    <string name="unanswered_questions_warning">Tienes %1$d preguntas sin responder.</string>
+    <string name="submit_test_info_message">@string/submit_test_message</string>
+    <string name="submit_anyway">Enviar de todos modos</string>
+
+    <string name="welcome_admin">Bienvenido, %1$s</string>
+    <string name="recent_activity_count">Actividad reciente: %1$d</string>
+    <string name="completion_rate">Tasa de finalización: %1$d%%</string>
+    <string name="average_score_percentage">Puntuación media: %1$d%%</string>
+
+    <string name="all_subjects">Todas las asignaturas</string>
+    <string name="score_percentage">Puntuación: %1$d%%</string>
+    <string name="pass_rate_formatted">Aprobados: %1$d%%</string>
+    <string name="fail_rate_formatted">Suspensos: %1$d%%</string>
+    <string name="time_format_hours_minutes">%1$d h %2$d min</string>
+    <string name="time_format_minutes">%1$d min</string>
+    <string name="time_format_hours">%1$d h</string>
+    <string name="metric_subject_subtitle">%1$d exámenes • %2$d%% media</string>
+
+    <string name="success_test_assigned">Examen asignado con éxito</string>
+    <string name="step_indicator">Paso %1$d de %2$d</string>
+    <string name="cancel_assignment">Cancelar asignación</string>
+    <string name="cancel_assignment_message">¿Estás seguro de que quieres cancelar la asignación?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+
+    <string name="step_select_mode">Seleccionar modo</string>
+    <string name="step_setup_questions">Configurar preguntas</string>
+    <string name="step_configure_test">Configurar examen</string>
+    <string name="cancel_test_creation">Cancelar creación de examen</string>
+    <string name="cancel_test_creation_message">¿Estás seguro de que quieres cancelar la creación del examen?</string>
+
+    <string name="answers_count">Respuestas: %1$d</string>
+    <string name="error_no_subject_selected">Por favor, selecciona una asignatura</string>
+    <string name="error_empty_question">El texto de la pregunta no puede estar vacío</string>
+    <string name="error_minimum_answers">Por favor, añade al menos dos respuestas</string>
+    <string name="error_no_correct_answer">Por favor, marca al menos una respuesta correcta</string>
+
+    <string name="error_empty_name">El nombre no puede estar vacío</string>
+
+    <string name="error_empty_username">El nombre de usuario no puede estar vacío</string>
+    <string name="error_password_too_short">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="error_passwords_not_match">Las contraseñas no coinciden</string>
+
+    <string name="select_users_deselect_all">Deseleccionar todos</string>
+    <string name="select_users_select_deadline">Seleccionar fecha límite</string>
+    <string name="select_users_assign">Asignar</string>
+    <string name="users_selected">%1$d usuarios seleccionados</string>
+    <string name="error_no_users_selected">Por favor, selecciona al menos un usuario</string>
+    <string name="error_no_deadline_selected">Por favor, selecciona una fecha límite</string>
+    <string name="no_time_limit">Sin límite de tiempo</string>
+    <string name="practice_mode_available">Modo de práctica disponible</string>
+    <string name="practice_mode_not_available">Modo de práctica no disponible</string>
+    <string name="error_empty_title">El título no puede estar vacío</string>
+    <string name="error_no_user_session">No se encontró sesión de usuario</string>
+    <string name="question_count">Preguntas: %1$d</string>
+    <string name="questions_selected">%1$d seleccionadas</string>
+    <string name="error_no_questions_selected">Por favor, selecciona al menos una pregunta</string>
+
+    <string name="fixed_mode_title">Modo fijo</string>
+    <string name="fixed_mode_description">Selecciona manualmente preguntas específicas en un orden fijo.</string>
+    <string name="fixed_feature_1">Selección manual de preguntas</string>
+    <string name="fixed_feature_2">Reordena preguntas arrastrando y soltando</string>
+    <string name="fixed_feature_3">Orden consistente para todos los usuarios</string>
+    <string name="fixed_feature_4">Ideal para exámenes estandarizados</string>
+
+    <string name="random_mode_title">Modo aleatorio</string>
+    <string name="random_mode_description">Selecciona preguntas aleatoriamente de las asignaturas elegidas.</string>
+    <string name="random_feature_1">Selecciona una o más asignaturas</string>
+    <string name="random_feature_2">Elige el número total de preguntas</string>
+    <string name="random_feature_3">Diferentes preguntas por usuario</string>
+    <string name="random_feature_4">Ideal para practicar y reducir las trampas</string>
+
+    <string name="available_questions_count">Preguntas disponibles: %1$d</string>
+    <string name="error_invalid_question_count">Por favor, introduce un número válido de preguntas</string>
+    <string name="error_invalid_time_limit">Por favor, introduce un límite de tiempo válido en minutos</string>
+    <string name="total_results">Total: %1$d</string>
+
+    <string name="completed_on">Completado el %1$s</string>
+    <string name="score_detail">%1$d/%2$d correctas</string>
+    <string name="error_result_not_found">Resultado no encontrado</string>
+    <string name="submit_test_warning">Tienes %1$d preguntas sin responder. ¿Enviar de todos modos?</string>
+    <string name="submit_test_confirmation">¿Quieres enviar tu examen?</string>
+    <string name="time_up_auto_submit">Se acabó el tiempo. Enviando tu examen…</string>
+    <string name="stay">Permanecer</string>
+    <string name="pending_tests">%1$d pendientes</string>
+    <string name="in_progress_tests">%1$d en progreso</string>
+    <string name="completed_tests">%1$d completados</string>
+    <string name="no_tests_assigned">No hay exámenes asignados</string>
+    <string name="no_tests_assigned_subtitle">Pide a tu administrador que te asigne exámenes</string>
+    <string name="error_loading_tests">Error al cargar los exámenes</string>
+    <string name="test_placeholder_title">Examen #%1$d</string>
+    <string name="subject_placeholder">Asignatura: —</string>
+    <string name="deadline_placeholder">Fecha límite establecida</string>
+    <string name="questions_unknown">Preguntas: —</string>
+    <string name="mode_unknown">Modo: —</string>
+    <string name="time_limit_unknown">Tiempo: </string>
+
+    <string name="menu_sort">Ordenar</string>
+    <string name="menu_clear_filters">Limpiar filtros</string>
+    <string name="sort_by">Ordenar por</string>
+    <string name="sort_by_deadline">Fecha límite</string>
+    <string name="sort_by_subject">Asignatura</string>
+    <string name="sort_by_status">Estado</string>
+    <string name="sort_by_date_assigned">Fecha de asignación</string>
+    <string name="accuracy_percentage">Precisión: %1$d%%</string>
+    <string name="result_passed">Resultado: Aprobado</string>
+    <string name="result_failed">Resultado: Suspenso</string>
+    <string name="share_result">Compartir resultado</string>
+    <string name="time_format_hms">%1$d h %2$d min %3$d s</string>
+    <string name="time_format_ms">%1$d min %2$d s</string>
+    <string name="start_practice_mode">Comenzar práctica</string>
+    <string name="start_exam_mode">Comenzar examen</string>
+    <string name="time_format_s">%1$ds</string>
+    <string name="error_assignment_not_found">Asignación no encontrada</string>
+    <string name="continue_test_progress">Progreso: %1$s</string>
+    <string name="assigned_date">Asignado: %1$s</string>
+    <string name="test_instructions">Instrucciones del examen</string>
+    <string name="instruction_questions_count">Número de preguntas: %1$d</string>
+    <string name="instruction_time_limit">Límite de tiempo: %1$s</string>
+    <string name="practice_mode_features">Características del modo de práctica:</string>
+    <string name="practice_feature_1">Retroalimentación instantánea al responder</string>
+    <string name="practice_feature_2">Se pueden revisar las respuestas durante el examen</string>
+    <string name="practice_feature_3">Múltiples intentos permitidos</string>
+    <string name="exam_mode_features">Características del modo de examen:</string>
+    <string name="exam_feature_1">Sin retroalimentación hasta el envío</string>
+    <string name="exam_feature_2">Un solo intento</string>
+    <string name="exam_feature_3">Se puede aplicar un tiempo estricto</string>
+    <string name="deadline_passed">La fecha límite ha pasado</string>
+    <string name="deadline_approaching">La fecha límite se acerca</string>
+    <string name="exam_mode_confirmation">¿Estás seguro de que quieres comenzar el examen en modo de examen?</string>
+    <string name="start">Comenzar</string>
+    <string name="error_invalid_subject">Asignatura no válida</string>
+    <string name="no_users_available">No hay usuarios disponibles</string>
+    <string name="error_no_test_selected">Por favor, selecciona un examen</string>
+    <string name="subject_metric">Asignatura</string>
 </resources>

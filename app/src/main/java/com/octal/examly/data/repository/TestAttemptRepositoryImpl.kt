@@ -48,7 +48,8 @@ class TestAttemptRepositoryImpl @Inject constructor(
 
     override suspend fun submitTest(attemptId: Long, score: Double): Result<Unit> {
         return try {
-            testAttemptDao.complete(attemptId, score)
+            val completedAt = System.currentTimeMillis()
+            testAttemptDao.complete(attemptId, score, completedAt)
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(Exception("Error al enviar test: ${e.message}", e))
@@ -69,7 +70,12 @@ class TestAttemptRepositoryImpl @Inject constructor(
             val attemptEntity = testAttemptDao.getById(attemptId)
                 ?: return Result.failure(Exception("Intento no encontrado"))
 
-            Result.success(attemptEntity.toDomain())
+            val userAnswerEntities = userAnswerDao.getByAttemptId(attemptId)
+            val userAnswers = userAnswerEntities.map { it.toDomain() }
+
+            val attempt = attemptEntity.toDomain().copy(userAnswers = userAnswers)
+
+            Result.success(attempt)
         } catch (e: Exception) {
             Result.failure(Exception("Error al reanudar intento: ${e.message}", e))
         }
@@ -77,7 +83,7 @@ class TestAttemptRepositoryImpl @Inject constructor(
 
     override suspend fun cancelAttempt(attemptId: Long): Result<Unit> {
         return try {
-            testAttemptDao.delete(attemptId)
+            testAttemptDao.deleteById(attemptId)
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(Exception("Error al cancelar intento: ${e.message}", e))

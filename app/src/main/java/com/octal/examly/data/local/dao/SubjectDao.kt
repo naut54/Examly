@@ -13,12 +13,14 @@ interface SubjectDao {
     fun getAll(): Flow<List<SubjectEntity>>
 
     @Query("SELECT * FROM subjects WHERE id = :subjectId")
-    suspend fun getById(subjectId: Int): SubjectEntity
+    suspend fun getById(subjectId: Long): SubjectEntity
 
     @Update
     suspend fun update(subject: SubjectEntity): Int
 
-
     @Delete
     suspend fun delete(subject: SubjectEntity): Int
+
+    @Query("SELECT COUNT(*) FROM subjects")
+    suspend fun getTotalCount(): Int
 }

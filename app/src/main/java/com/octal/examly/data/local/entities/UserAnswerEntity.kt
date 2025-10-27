@@ -29,11 +29,11 @@ import androidx.room.PrimaryKey
 )
 data class UserAnswerEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
 
-    val attemptId: Int,
+    val attemptId: Long,
 
-    val questionId: Int,
+    val questionId: Long,
 
     val selectedAnswerIds: String,
 

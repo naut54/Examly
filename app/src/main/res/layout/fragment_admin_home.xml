@@ -17,7 +17,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvWelcome"
+                android:id="@+id/tvWelcomeMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/admin_home_welcome"
@@ -36,7 +36,8 @@
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:textSize="@dimen/text_size_body"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
+                app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
+                tools:ignore="UnknownIdInLayout" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardQuickActions"
@@ -109,7 +110,7 @@
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardCreateQuestion"
+                            android:id="@+id/cardAssignTestAction"
                             android:layout_width="0dp"
                             android:layout_height="120dp"
                             android:layout_marginStart="@dimen/margin_small"
@@ -130,8 +131,8 @@
                                 <ImageView
                                     android:layout_width="48dp"
                                     android:layout_height="48dp"
-                                    android:contentDescription="@string/admin_home_create_question"
-                                    android:src="@drawable/ic_question"
+                                    android:contentDescription="@string/assign_test"
+                                    android:src="@drawable/ic_user"
                                     app:tint="?attr/colorSecondary" />
 
                                 <TextView
@@ -139,7 +140,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/margin_small"
                                     android:gravity="center"
-                                    android:text="@string/admin_home_create_question"
+                                    android:text="@string/assign_test"
                                     android:textColor="?attr/colorOnSurface"
                                     android:textSize="@dimen/text_size_body"
                                     android:textStyle="bold" />
@@ -155,7 +156,7 @@
                         android:weightSum="2">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardCreateUser"
+                            android:id="@+id/cardCreateQuestion"
                             android:layout_width="0dp"
                             android:layout_height="120dp"
                             android:layout_marginEnd="@dimen/margin_small"
@@ -176,9 +177,47 @@
                                 <ImageView
                                     android:layout_width="48dp"
                                     android:layout_height="48dp"
+                                    android:contentDescription="@string/admin_home_create_question"
+                                    android:src="@drawable/ic_question"
+                                    app:tint="?attr/colorTertiary" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_small"
+                                    android:gravity="center"
+                                    android:text="@string/admin_home_create_question"
+                                    android:textColor="?attr/colorOnSurface"
+                                    android:textSize="@dimen/text_size_body"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardCreateUser"
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="@dimen/margin_small"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="@dimen/card_corner_radius"
+                            app:cardElevation="2dp"
+                            app:rippleColor="?attr/colorPrimary">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="@dimen/padding_medium">
+
+                                <ImageView
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:contentDescription="@string/admin_home_create_user"
                                     android:src="@drawable/ic_user"
-                                    app:tint="?attr/colorTertiary" />
+                                    app:tint="?attr/colorPrimary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -191,17 +230,25 @@
                                     android:textStyle="bold" />
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/cardCreateSubject"
                             android:layout_width="0dp"
                             android:layout_height="120dp"
-                            android:layout_marginStart="@dimen/margin_small"
                             android:layout_weight="1"
                             android:clickable="true"
                             android:focusable="true"
                             app:cardCornerRadius="@dimen/card_corner_radius"
-                            app:cardElevation="2dp">
+                            app:cardElevation="2dp"
+                            app:rippleColor="?attr/colorSecondary">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -215,7 +262,7 @@
                                     android:layout_height="48dp"
                                     android:contentDescription="@string/admin_home_create_subject"
                                     android:src="@drawable/ic_subject"
-                                    app:tint="?attr/colorPrimary" />
+                                    app:tint="?attr/colorSecondary" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -228,6 +275,11 @@
                                     android:textStyle="bold" />
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -277,7 +329,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tvUsersCount"
+                                android:id="@+id/tvTotalUsers"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="?attr/colorPrimary"
@@ -307,7 +359,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tvTestsCount"
+                                android:id="@+id/tvTotalTests"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="?attr/colorSecondary"
@@ -337,7 +389,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tvSubjectsCount"
+                                android:id="@+id/tvTotalSubjects"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="?attr/colorTertiary"
@@ -367,7 +419,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tvQuestionsCount"
+                                android:id="@+id/tvTotalQuestions"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="?attr/colorPrimary"
@@ -387,8 +439,108 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAssignTest"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAllTests"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAllResults"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnViewMetrics"
+                android:id="@+id/btnRefresh"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/progressCompletionRate"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCompletionRate"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAverageScore"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalResults"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvActiveAssignments"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvRecentActivity"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/cardOverview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cardViewMetrics"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

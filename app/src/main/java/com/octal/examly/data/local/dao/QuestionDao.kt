@@ -13,13 +13,13 @@ interface QuestionDao {
     fun getAll(): Flow<List<QuestionEntity>>
 
     @Query("SELECT * FROM questions WHERE id = :questionId")
-    suspend fun getById(questionId: Int): QuestionEntity
+    suspend fun getById(questionId: Long): QuestionEntity
 
     @Query("SELECT * FROM questions WHERE subjectId = :subjectId ORDER BY createdAt DESC")
-    fun getBySubjectId(subjectId: Int): Flow<List<QuestionEntity>>
+    fun getBySubjectId(subjectId: Long): Flow<List<QuestionEntity>>
 
     @Query("SELECT * FROM questions WHERE subjectId = :subjectId ORDER BY RANDOM() LIMIT :limit")
-    fun getRandomQuestionsBySubject(subjectId: Int, limit: Int)
+    suspend fun getRandomQuestionsBySubject(subjectId: Long, limit: Int?): List<QuestionEntity>
 
     @Update
     suspend fun update(question: QuestionEntity): Int

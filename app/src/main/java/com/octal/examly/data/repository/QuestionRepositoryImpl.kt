@@ -35,6 +35,16 @@ class QuestionRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun getAllQuestions(): Flow<List<Question>> {
+        return questionDao.getAll().map { questionEntities ->
+            questionEntities.map { questionEntity ->
+                val answers = answerDao.getByQuestionId(questionEntity.id)
+                    .map { it.toDomain() }
+                questionEntity.toDomain(answers)
+            }
+        }
+    }
+
     override fun getQuestionsBySubject(subjectId: Long): Flow<List<Question>> {
         return questionDao.getBySubjectId(subjectId).map { questionEntities ->
             questionEntities.map { questionEntity ->

@@ -5,59 +5,64 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.octal.examly.R
-import com.octal.examly.presentation.viewmodel.SplashViewModel
-import com.octal.examly.utils.Constants
+import com.octal.examly.presentation.viewmodel.MainViewModel
+import com.octal.examly.util.SessionManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
-    private val viewModel: SplashViewModel by viewModels()
+    @Inject
+    lateinit var sessionManager: SessionManager
+
+    private val viewModel: MainViewModel by viewModels()
+
+    companion object {
+        private const val SPLASH_DELAY = 2000L
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        observeNavigation()
+        checkSession()
     }
 
-    private fun observeNavigation() {
+    private fun checkSession() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                // Espera mínima para mostrar el splash
-                delay(Constants.SPLASH_DELAY)
+            delay(SPLASH_DELAY)
 
-                viewModel.checkAuthStatus()
+            val isLoggedIn = sessionManager.isLoggedIn()
 
-                viewModel.navigationEvent.collect { destination ->
-                    when (destination) {
-                        SplashViewModel.NavigationDestination.Login -> {
-                            navigateToLogin()
-                        }
-                        SplashViewModel.NavigationDestination.Main -> {
-                            navigateToMain()
-                        }
-                    }
+            if (isLoggedIn) {
+                val currentUser = sessionManager.getUser()
+                if (currentUser != null) {
+                    navigateToMain()
+                } else {
+                    navigateToLogin()
                 }
+            } else {
+                navigateToLogin()
             }
         }
     }
 
-    private fun navigateToLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
+    private fun navigateToMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
     }
 
-    private fun navigateToMain() {
-        val intent = Intent(this, MainActivity::class.java)
+    private fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
     }

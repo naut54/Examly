@@ -1,5 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Examly" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Base Application Theme -->
+    <style name="Theme.Examly" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <item name="colorSecondaryContainer">@color/secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/on_secondary_container</item>
+
+        <!-- Background Colors -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/on_background</item>
+
+        <!-- Surface Colors -->
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+
+        <!-- Error Colors -->
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/on_error</item>
+        <item name="colorErrorContainer">@color/error_container</item>
+        <item name="colorOnErrorContainer">@color/on_error_container</item>
+
+        <!-- Outline Colors -->
+        <item name="colorOutline">@color/outline</item>
+        <item name="colorOutlineVariant">@color/outline_variant</item>
+
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Window Background -->
+        <item name="android:windowBackground">@color/background</item>
+
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+
+        <!-- Action Bar -->
+        <item name="actionBarTheme">@style/ThemeOverlay.Material3.Dark.ActionBar</item>
+
+        <!-- Material Components -->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Examly.MaterialAlertDialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Examly.BottomSheetDialog</item>
+        <item name="textInputStyle">@style/Widget.Examly.TextInputLayout</item>
+    </style>
+
+    <!-- Splash Screen Theme -->
+    <style name="Theme.Examly.Splash" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:navigationBarColor">@color/primary</item>
+        <item name="android:windowBackground">@color/primary</item>
+    </style>
+
+    <!-- Login Theme -->
+    <style name="Theme.Examly.Login" parent="Theme.Examly">
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!-- Material Alert Dialog Theme -->
+    <style name="ThemeOverlay.Examly.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.Examly</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.Examly.Title</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Examly.Button.TextButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Examly.Button.TextButton</item>
+    </style>
+
+    <style name="MaterialAlertDialog.Examly" parent="MaterialAlertDialog.Material3">
+        <item name="shapeAppearance">@style/ShapeAppearance.Examly.MediumComponent</item>
+    </style>
+
+    <style name="MaterialAlertDialog.Examly.Title" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">@color/on_surface</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- Bottom Sheet Dialog Theme -->
+    <style name="ThemeOverlay.Examly.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Examly.BottomSheet</item>
+    </style>
+
+    <style name="Widget.Examly.BottomSheet" parent="Widget.Material3.BottomSheet">
+        <item name="shapeAppearance">@style/ShapeAppearance.Examly.LargeComponent</item>
+    </style>
+
+    <!-- Shape Appearances -->
+    <style name="ShapeAppearance.Examly.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Examly.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Examly.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Widget.Examly.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <style name="Widget.Examly.Button.OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <style name="Widget.Examly.Button.TextButton" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- TextInputLayout Style -->
+    <style name="Widget.Examly.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="hintTextColor">@color/primary</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Examly.SmallComponent</item>
+    </style>
+
+    <!-- Card Style -->
+    <style name="Widget.Examly.CardView" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/outline_variant</item>
+    </style>
+
+    <!-- Chip Styles -->
+    <style name="Widget.Examly.Chip.Filter" parent="Widget.Material3.Chip.Filter">
+        <item name="chipMinHeight">32dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Widget.Examly.Chip.Assist" parent="Widget.Material3.Chip.Assist">
+        <item name="chipMinHeight">28dp</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="Widget.Examly.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="titleTextColor">@color/on_primary</item>
+        <item name="subtitleTextColor">@color/on_primary</item>
+    </style>
+
+    <!-- Progress Indicator Style -->
+    <style name="Widget.Examly.LinearProgressIndicator" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="trackCornerRadius">4dp</item>
+        <item name="indicatorColor">@color/primary</item>
+        <item name="trackColor">@color/surface_variant</item>
+    </style>
+
 </resources>

@@ -2,7 +2,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     kotlin("kapt")
-    id("com.google.dagger.hilt.android") version "2.48"
+    id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization") version "1.9.23"
+    id("androidx.navigation.safeargs.kotlin") version "2.7.7"
+
 }
 
 android {
@@ -37,6 +40,11 @@ android {
     }
     buildFeatures {
         buildConfig = true
+        viewBinding = true
+    }
+
+    lint {
+        abortOnError = false
     }
 }
 
@@ -49,17 +57,24 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
     implementation(libs.material)
     implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.swiperefreshlayout)
     kapt("androidx.room:room-compiler:2.6.1")
 
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
     implementation("org.mindrot:jbcrypt:0.4")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-compiler:2.51.1")
+
+    implementation("com.squareup:javapoet:1.13.0")
+
+    implementation(libs.mpandroidchart)
+
+    implementation("io.coil-kt:coil:2.5.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

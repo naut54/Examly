@@ -31,9 +31,9 @@ data class TestQuestionEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-    val testId: Int,
+    val testId: Long,
 
-    val questionId: Int,
+    val questionId: Long,
 
     val orderIndex: Int
 )

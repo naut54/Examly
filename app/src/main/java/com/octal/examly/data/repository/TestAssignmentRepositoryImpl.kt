@@ -16,7 +16,7 @@ class TestAssignmentRepositoryImpl @Inject constructor(
     override suspend fun assignTest(
         testId: Long,
         userIds: List<Long>,
-        assignedBy: Long,
+        assignedBy: Long?,
         deadline: Long?
     ): Result<List<Long>> {
         return try {
@@ -45,9 +45,8 @@ class TestAssignmentRepositoryImpl @Inject constructor(
     }
 
     override fun getAssignedTests(userId: Long): Flow<List<TestAssignment>> {
-        return testAssignmentDao.getByUserId(userId).map { entities ->
-            entities.map { it.toDomain() }
-        }
+        return testAssignmentDao.getByUserId(userId)
+            .map { entities -> entities.map { it.toDomain() } }
     }
 
     override suspend fun getAssignmentById(assignmentId: Long): Result<TestAssignment> {

@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface QuestionRepository {
     suspend fun createQuestion(question: Question): Result<Long>
+    fun getAllQuestions(): Flow<List<Question>>
     fun getQuestionsBySubject(subjectId: Long): Flow<List<Question>>
     suspend fun getQuestionById(questionId: Long): Result<Question>
     suspend fun updateQuestion(question: Question): Result<Unit>

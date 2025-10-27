@@ -6,15 +6,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.octal.examly.R
+import com.octal.examly.databinding.ActivityLoginBinding
 import com.octal.examly.presentation.state.LoginState
 import com.octal.examly.presentation.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,72 +20,54 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityLoginBinding
     private val viewModel: LoginViewModel by viewModels()
-
-    private lateinit var usernameInputLayout: TextInputLayout
-    private lateinit var usernameEditText: TextInputEditText
-    private lateinit var passwordInputLayout: TextInputLayout
-    private lateinit var passwordEditText: TextInputEditText
-    private lateinit var loginButton: MaterialButton
-    private lateinit var progressIndicator: CircularProgressIndicator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setupToolbar()
-        initializeViews()
-        setupListeners()
+        setupUI()
         observeLoginState()
     }
 
-    private fun setupToolbar() {
-        supportActionBar?.apply {
-            title = "Iniciar Sesión"
-            setDisplayHomeAsUpEnabled(false)
-        }
-    }
+    private fun setupUI() {
+        binding.btnLogin.setOnClickListener {
+            val username = binding.etUsername.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
 
-    private fun initializeViews() {
-        usernameInputLayout = findViewById(R.id.usernameInputLayout)
-        usernameEditText = findViewById(R.id.usernameEditText)
-        passwordInputLayout = findViewById(R.id.passwordInputLayout)
-        passwordEditText = findViewById(R.id.passwordEditText)
-        loginButton = findViewById(R.id.loginButton)
-        progressIndicator = findViewById(R.id.progressIndicator)
-    }
+            binding.tilUsername.error = null
+            binding.tilPassword.error = null
 
-    private fun setupListeners() {
-        // Limpiar errores al escribir
-        usernameEditText.doOnTextChanged { _, _, _, _ ->
-            usernameInputLayout.error = null
-        }
-
-        passwordEditText.doOnTextChanged { _, _, _, _ ->
-            passwordInputLayout.error = null
-        }
-
-        // Botón de login
-        loginButton.setOnClickListener {
-            val username = usernameEditText.text.toString().trim()
-            val password = passwordEditText.text.toString().trim()
-
-            if (validateInput(username, password)) {
+            if (validateInputs(username, password)) {
                 viewModel.login(username, password)
+            }
+        }
+
+        binding.etUsername.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.tilUsername.error = null
+            }
+        }
+
+        binding.etPassword.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.tilPassword.error = null
             }
         }
     }
 
-    private fun validateInput(username: String, password: String): Boolean {
+    private fun validateInputs(username: String, password: String): Boolean {
         var isValid = true
 
-        if (username.isBlank()) {
-            usernameInputLayout.error = "El usuario no puede estar vacío"
+        if (username.isEmpty()) {
+            binding.tilUsername.error = getString(R.string.error_empty_fields)
             isValid = false
         }
 
-        if (password.isBlank()) {
-            passwordInputLayout.error = "La contraseña no puede estar vacía"
+        if (password.isEmpty()) {
+            binding.tilPassword.error = getString(R.string.error_empty_fields)
             isValid = false
         }
 
@@ -101,17 +80,25 @@ class LoginActivity : AppCompatActivity() {
                 viewModel.loginState.collect { state ->
                     when (state) {
                         is LoginState.Idle -> {
-                            showLoading(false)
+                            hideLoading()
                         }
+
                         is LoginState.Loading -> {
-                            showLoading(true)
+                            showLoading()
                         }
+
                         is LoginState.Success -> {
-                            showLoading(false)
+                            hideLoading()
+                            Toast.makeText(
+                                this@LoginActivity,
+                                getString(R.string.success_login),
+                                Toast.LENGTH_SHORT
+                            ).show()
                             navigateToMain()
                         }
+
                         is LoginState.Error -> {
-                            showLoading(false)
+                            hideLoading()
                             showError(state.message)
                         }
                     }
@@ -120,22 +107,28 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            loginButton.visibility = View.GONE
-            progressIndicator.visibility = View.VISIBLE
-            usernameEditText.isEnabled = false
-            passwordEditText.isEnabled = false
-        } else {
-            loginButton.visibility = View.VISIBLE
-            progressIndicator.visibility = View.GONE
-            usernameEditText.isEnabled = true
-            passwordEditText.isEnabled = true
-        }
+    private fun showLoading() {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.btnLogin.isEnabled = false
+        binding.etUsername.isEnabled = false
+        binding.etPassword.isEnabled = false
+    }
+
+    private fun hideLoading() {
+        binding.progressBar.visibility = View.GONE
+        binding.btnLogin.isEnabled = true
+        binding.etUsername.isEnabled = true
+        binding.etPassword.isEnabled = true
     }
 
     private fun showError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+
+        if (message.contains("credentials", ignoreCase = true) ||
+            message.contains("username", ignoreCase = true) ||
+            message.contains("password", ignoreCase = true)) {
+            binding.tilPassword.error = getString(R.string.error_invalid_credentials)
+        }
     }
 
     private fun navigateToMain() {
@@ -143,5 +136,9 @@ class LoginActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
+    }
+
+    override fun onBackPressed() {
+        finishAffinity()
     }
 }

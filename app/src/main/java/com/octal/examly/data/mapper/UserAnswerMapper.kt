@@ -2,9 +2,8 @@ package com.octal.examly.data.mapper
 
 import com.octal.examly.data.local.entities.UserAnswerEntity
 import com.octal.examly.domain.model.UserAnswer
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 fun UserAnswerEntity.toDomain(): UserAnswer {
     val answerIds = try {

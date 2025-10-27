@@ -13,7 +13,7 @@ interface TestDao {
     fun getAll(): Flow<List<TestEntity>>
 
     @Query("SELECT * FROM tests WHERE id = :testId")
-    suspend fun getById(testId: Int): TestEntity
+    suspend fun getById(testId: Long): TestEntity
 
     @Query("SELECT * FROM tests WHERE createdBy = :creatorId ORDER BY createdAt DESC")
     fun getByCreatorId(creatorId: Int): Flow<List<TestEntity>>
@@ -23,4 +23,7 @@ interface TestDao {
 
     @Delete
     suspend fun delete(test: TestEntity): Int
+
+    @Query("SELECT COUNT(*) FROM tests")
+    suspend fun getTotalCount(): Int
 }

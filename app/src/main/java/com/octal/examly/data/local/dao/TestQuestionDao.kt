@@ -14,6 +14,12 @@ interface TestQuestionDao {
     @Query("SELECT * FROM test_questions WHERE testId = :testId")
     suspend fun getByTestId(testId: Int): List<TestQuestionEntity>
 
+    @Query("DELETE FROM test_questions WHERE testId = :testId")
+    suspend fun deleteByTestId(testId: Long): Int
+
+    @Query("SELECT * FROM test_questions WHERE testId = :testId")
+    suspend fun getQuestionsByTestId(testId: Long): List<TestQuestionEntity>
+
     @Delete
     suspend fun delete(testQuestion: TestQuestionEntity): Int
 }

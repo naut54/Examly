@@ -14,7 +14,7 @@ interface UserDao {
     fun getAll(): Flow<List<UserEntity>>
 
     @Query("SELECT * FROM users WHERE id = :userId")
-    suspend fun getById(userId: Int): UserEntity?
+    suspend fun getById(userId: Long): UserEntity?
 
     @Query("SELECT * FROM users WHERE username = :username")
     suspend fun getByUsername(username: String): UserEntity?
@@ -24,4 +24,7 @@ interface UserDao {
 
     @Delete
     suspend fun delete(user: UserEntity): Int
+
+    @Query("SELECT COUNT(*) FROM users")
+    suspend fun getTotalCount(): Int
 }

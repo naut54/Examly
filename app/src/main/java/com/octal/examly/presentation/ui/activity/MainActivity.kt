@@ -4,20 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.octal.examly.R
+import com.octal.examly.databinding.ActivityMainBinding
 import com.octal.examly.domain.model.UserRole
-import com.octal.examly.presentation.ui.fragment.admin.AdminHomeFragment
-import com.octal.examly.presentation.ui.fragment.common.HomeFragment
-import com.octal.examly.presentation.ui.fragment.common.ResultsFragment
-import com.octal.examly.presentation.ui.fragment.common.SettingsFragment
 import com.octal.examly.presentation.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -25,103 +27,140 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
     private val viewModel: MainViewModel by viewModels()
-    private lateinit var bottomNavigationView: BottomNavigationView
+
     private var currentUserRole: UserRole? = null
+    private var hasNavigatedToInitialDestination = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setupToolbar()
-        initializeViews()
+        setupNavigation()
         observeCurrentUser()
-        observeLogoutEvent()
+        setupBackPressedHandler()
     }
 
-    private fun setupToolbar() {
-        setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.apply {
-            setDisplayShowTitleEnabled(true)
+    private fun setupNavigation() {
+        setSupportActionBar(binding.toolbar)
+
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.navHostFragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment,
+                R.id.testListFragment,
+                R.id.resultsFragment,
+                R.id.settingsFragment,
+                R.id.adminHomeFragment
+            )
+        )
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        binding.bottomNavigation?.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            supportActionBar?.title = destination.label
         }
-    }
-
-    private fun initializeViews() {
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
     }
 
     private fun observeCurrentUser() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.currentUser.collect { user ->
-                    if (user == null) {
-                        navigateToLogin()
-                    } else {
-                        currentUserRole = user.role
-                        setupBottomNavigation(user.role)
-
-                        // Cargar el fragment inicial si es la primera vez
-                        if (savedInstanceState == null) {
-                            loadInitialFragment(user.role)
-                        }
+                    user?.let {
+                        currentUserRole = it.role
+                        setupNavigationForRole(it.role)
                     }
                 }
             }
         }
     }
 
-    private fun setupBottomNavigation(userRole: UserRole) {
-        // Configurar el menú según el rol
-        bottomNavigationView.menu.clear()
+    private fun setupNavigationForRole(role: UserRole) {
+        binding.bottomNavigation.menu.clear()
 
-        if (userRole.isAdmin()) {
-            bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_admin)
-        } else {
-            bottomNavigationView.inflateMenu(R.menu.bottom_nav_menu_user)
-        }
+        when (role) {
+            UserRole.USER -> {
+                binding.bottomNavigation.inflateMenu(R.menu.bottom_nav_menu_user)
 
-        bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    loadFragment(HomeFragment())
-                    supportActionBar?.title = "Mis Tests"
-                    true
+                if (!hasNavigatedToInitialDestination) {
+                    navigateToInitialDestination(R.id.homeFragment)
                 }
-                R.id.navigation_admin_home -> {
-                    loadFragment(AdminHomeFragment())
-                    supportActionBar?.title = "Administración"
-                    true
+            }
+
+            UserRole.ADMIN -> {
+                binding.bottomNavigation.inflateMenu(R.menu.bottom_nav_menu_admin)
+
+                if (!hasNavigatedToInitialDestination) {
+                    navigateToInitialDestination(R.id.adminHomeFragment)
                 }
-                R.id.navigation_results -> {
-                    loadFragment(ResultsFragment())
-                    supportActionBar?.title = "Resultados"
-                    true
-                }
-                R.id.navigation_settings -> {
-                    loadFragment(SettingsFragment())
-                    supportActionBar?.title = "Ajustes"
-                    true
-                }
-                else -> false
             }
         }
-    }
 
-    private fun loadInitialFragment(userRole: UserRole) {
-        val fragment = if (userRole.isAdmin()) {
-            supportActionBar?.title = "Administración"
-            AdminHomeFragment()
-        } else {
-            supportActionBar?.title = "Mis Tests"
-            HomeFragment()
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            if (navController.currentDestination?.id != item.itemId) {
+                try {
+                    navController.popBackStack(item.itemId, false)
+                    if (navController.currentDestination?.id != item.itemId) {
+                        navController.navigate(item.itemId)
+                    }
+                } catch (e: IllegalArgumentException) {
+                    val homeDestination = when (currentUserRole) {
+                        UserRole.ADMIN -> R.id.adminHomeFragment
+                        else -> R.id.homeFragment
+                    }
+                    navController.popBackStack(homeDestination, false)
+                    if (item.itemId != homeDestination) {
+                        navController.navigate(item.itemId)
+                    }
+                }
+            }
+            true
         }
-        loadFragment(fragment)
     }
 
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment)
-            .commit()
+    private fun navigateToInitialDestination(destinationId: Int) {
+        if (navController.currentDestination?.id == R.id.homeFragment && destinationId != R.id.homeFragment) {
+            navController.navigate(destinationId)
+        }
+        hasNavigatedToInitialDestination = true
+    }
+
+    private fun setupBackPressedHandler() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val topLevelDestinations = setOf(
+                    R.id.homeFragment,
+                    R.id.adminHomeFragment
+                )
+
+                if (navController.currentDestination?.id in topLevelDestinations) {
+                    showExitConfirmationDialog()
+                } else {
+                    if (!navController.popBackStack()) {
+                        finish()
+                    }
+                }
+            }
+        })
+    }
+
+    private fun showExitConfirmationDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.exit)
+            .setMessage(getString(R.string.confirm_action))
+            .setPositiveButton(R.string.exit) { _, _ ->
+                finishAffinity()
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -132,51 +171,50 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_logout -> {
-                showLogoutDialog()
+                showLogoutConfirmationDialog()
+                true
+            }
+            R.id.action_settings -> {
+                navController.navigate(R.id.settingsFragment)
+                true
+            }
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun showLogoutDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Cerrar sesión")
-            .setMessage("¿Estás seguro de que deseas cerrar sesión?")
-            .setPositiveButton("Sí") { _, _ ->
-                viewModel.logout()
+    private fun showLogoutConfirmationDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.logout)
+            .setMessage(getString(R.string.confirm_logout))
+            .setPositiveButton(R.string.logout) { _, _ ->
+                performLogout()
             }
-            .setNegativeButton("Cancelar", null)
+            .setNegativeButton(R.string.cancel, null)
             .show()
     }
 
-    private fun observeLogoutEvent() {
+    private fun performLogout() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.logoutEvent.collect {
-                    navigateToLogin()
-                }
-            }
+            viewModel.logout()
+
+            Toast.makeText(
+                this@MainActivity,
+                getString(R.string.success_logout),
+                Toast.LENGTH_SHORT
+            ).show()
+
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
         }
     }
 
-    private fun navigateToLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish()
-    }
-
-    override fun onBackPressed() {
-        // Prevenir que el usuario regrese con el botón atrás
-        // Mostrar diálogo de confirmación para salir de la app
-        AlertDialog.Builder(this)
-            .setTitle("Salir")
-            .setMessage("¿Deseas salir de la aplicación?")
-            .setPositiveButton("Sí") { _, _ ->
-                super.onBackPressed()
-            }
-            .setNegativeButton("No", null)
-            .show()
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

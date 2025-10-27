@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.common.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_testList"
+            app:destination="@id/testListFragment" />
+        <action
+            android:id="@+id/action_home_to_results"
+            app:destination="@id/resultsFragment" />
+        <action
+            android:id="@+id/action_home_to_settings"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_home_to_adminHome"
+            app:destination="@id/adminHomeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.common.SettingsFragment"
+        android:label="@string/nav_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.common.ResultsFragment"
+        android:label="@string/nav_results"
+        tools:layout="@layout/fragment_results">
+        <action
+            android:id="@+id/action_resultsFragment_to_testResultDetailFragment"
+            app:destination="@id/testResultDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testListFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.user.TestListFragment"
+        android:label="@string/nav_my_tests"
+        tools:layout="@layout/fragment_test_list">
+        <action
+            android:id="@+id/action_testListFragment_to_testSummaryFragment"
+            app:destination="@id/testSummaryFragment" />
+        <action
+            android:id="@+id/action_testListFragment_to_testExecutionFragment"
+            app:destination="@id/testExecutionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testSummaryFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.user.TestSummaryFragment"
+        android:label="@string/nav_test_summary"
+        tools:layout="@layout/fragment_test_summary">
+        <argument
+            android:name="assignmentId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_testSummary_to_testExecution"
+            app:destination="@id/testExecutionFragment"
+            app:popUpTo="@id/testListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testExecutionFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.user.TestExecutionFragment"
+        android:label="@string/nav_test_execution"
+        tools:layout="@layout/fragment_test_execution">
+        <argument
+            android:name="assignmentId"
+            app:argType="long" />
+        <argument
+            android:name="attemptId"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="isResume"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="isPracticeMode"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_testExecution_to_resultDetail"
+            app:destination="@id/testResultDetailFragment"
+            app:popUpTo="@id/testListFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testResultDetailFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.user.TestResultDetailFragment"
+        android:label="@string/nav_test_result"
+        tools:layout="@layout/fragment_test_result_detail">
+        <argument
+            android:name="resultId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_testResultDetailFragment_to_testSummaryFragment"
+            app:destination="@id/testSummaryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/adminHomeFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.AdminHomeFragment"
+        android:label="@string/nav_admin_dashboard"
+        tools:layout="@layout/fragment_admin_home">
+        <action
+            android:id="@+id/action_adminHome_to_createTest"
+            app:destination="@id/createTestFragment" />
+        <action
+            android:id="@+id/action_adminHome_to_assignTest"
+            app:destination="@id/assignTestFragment" />
+        <action
+            android:id="@+id/action_adminHome_to_createUser"
+            app:destination="@id/createUserFragment" />
+        <action
+            android:id="@+id/action_adminHome_to_createSubject"
+            app:destination="@id/createSubjectFragment" />
+        <action
+            android:id="@+id/action_adminHome_to_createQuestion"
+            app:destination="@id/createQuestionFragment" />
+        <action
+            android:id="@+id/action_adminHome_to_metrics"
+            app:destination="@id/adminMetricsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createTestFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.CreateTestFragment"
+        android:label="@string/nav_create_test"
+        tools:layout="@layout/fragment_create_test">
+        <action
+            android:id="@+id/action_createTest_to_modeSelection"
+            app:destination="@id/testModeSelectionFragment" />
+        <action
+            android:id="@+id/action_createTest_to_fixedSetup"
+            app:destination="@id/testFixedSetupFragment" />
+        <action
+            android:id="@+id/action_createTest_to_randomSetup"
+            app:destination="@id/testRandomSetupFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testModeSelectionFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.TestModeSelectionFragment"
+        android:label="@string/nav_select_test_mode"
+        tools:layout="@layout/fragment_test_mode_selection">
+        <action
+            android:id="@+id/action_modeSelection_to_fixedSetup"
+            app:destination="@id/testFixedSetupFragment" />
+        <action
+            android:id="@+id/action_modeSelection_to_randomSetup"
+            app:destination="@id/testRandomSetupFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testFixedSetupFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.TestFixedSetupFragment"
+        android:label="@string/nav_fixed_test_setup"
+        tools:layout="@layout/fragment_test_fixed_setup">
+        <action
+            android:id="@+id/action_fixedSetup_to_configuration"
+            app:destination="@id/testConfigurationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testRandomSetupFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.TestRandomSetupFragment"
+        android:label="@string/nav_random_test_setup"
+        tools:layout="@layout/fragment_test_random_setup">
+        <action
+            android:id="@+id/action_randomSetup_to_configuration"
+            app:destination="@id/testConfigurationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testConfigurationFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.TestConfigurationFragment"
+        android:label="@string/nav_test_configuration"
+        tools:layout="@layout/fragment_test_configuration">
+        <action
+            android:id="@+id/action_configuration_to_adminHome"
+            app:destination="@id/adminHomeFragment"
+            app:popUpTo="@id/adminHomeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/assignTestFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.AssignTestFragment"
+        android:label="@string/nav_assign_test"
+        tools:layout="@layout/fragment_assign_test">
+        <action
+            android:id="@+id/action_assignTest_to_selectTest"
+            app:destination="@id/selectTestFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/selectTestFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.SelectTestFragment"
+        android:label="@string/nav_select_test"
+        tools:layout="@layout/fragment_select_test">
+        <action
+            android:id="@+id/action_selectTestFragment_to_selectUsersFragment"
+            app:destination="@id/selectUsersFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/selectUsersFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.SelectUsersFragment"
+        android:label="@string/nav_select_users"
+        tools:layout="@layout/fragment_select_users">
+        <argument
+            android:name="testId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_selectUsers_to_adminHome"
+            app:destination="@id/adminHomeFragment"
+            app:popUpTo="@id/adminHomeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createUserFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.CreateUserFragment"
+        android:label="@string/nav_create_user"
+        tools:layout="@layout/fragment_create_user" />
+
+    <fragment
+        android:id="@+id/createSubjectFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.CreateSubjectFragment"
+        android:label="@string/nav_create_subject"
+        tools:layout="@layout/fragment_create_subject" />
+
+    <fragment
+        android:id="@+id/createQuestionFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.CreateQuestionFragment"
+        android:label="@string/nav_create_question"
+        tools:layout="@layout/fragment_create_question" />
+
+    <fragment
+        android:id="@+id/adminMetricsFragment"
+        android:name="com.octal.examly.presentation.ui.fragment.admin.AdminMetricsFragment"
+        android:label="@string/nav_metrics"
+        tools:layout="@layout/fragment_admin_metrics" />
+
+</navigation>

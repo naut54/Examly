@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/emoya/Documents/DAM2/CosasVarias/**)",
+      "Bash(find:*)",
+      "Bash(while read file)",
+      "Bash(do if ! grep -q \"xmlns:tools\" \"$file\")",
+      "Bash(then echo \"$file\")",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(./gradlew build:*)",
+      "Bash(./gradlew assembleDebug:*)",
+      "Bash(./gradlew clean:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

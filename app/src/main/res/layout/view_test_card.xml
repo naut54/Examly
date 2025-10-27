@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="com.google.android.material.card.MaterialCardView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_normal">
+
+        <ImageView
+            android:id="@+id/ivTestIcon"
+            android:layout_width="@dimen/icon_size_large"
+            android:layout_height="@dimen/icon_size_large"
+            android:contentDescription="@string/test_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_test" />
+
+        <TextView
+            android:id="@+id/tvStatusBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/spacing_small"
+            android:paddingVertical="@dimen/spacing_tiny"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_tiny"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/bg_badge_pending"
+            tools:text="PENDING"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tvTestTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvStatusBadge"
+            app:layout_constraintStart_toEndOf="@+id/ivTestIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivTestIcon"
+            tools:text="Mathematics Final Exam" />
+
+        <TextView
+            android:id="@+id/tvTestDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintEnd_toEndOf="@+id/tvTestTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvTestTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvTestTitle"
+            tools:text="Comprehensive test covering all topics" />
+
+        <TextView
+            android:id="@+id/tvSubject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@drawable/bg_card"
+            android:paddingHorizontal="@dimen/spacing_small"
+            android:paddingVertical="@dimen/spacing_tiny"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="@dimen/text_size_caption"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivTestIcon"
+            tools:text="Mathematics" />
+
+        <TextView
+            android:id="@+id/tvModeBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:paddingHorizontal="@dimen/spacing_small"
+            android:paddingVertical="@dimen/spacing_tiny"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_caption"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSubject"
+            app:layout_constraintStart_toEndOf="@+id/tvSubject"
+            app:layout_constraintTop_toTopOf="@+id/tvSubject"
+            tools:background="@drawable/bg_badge_exam"
+            tools:text="EXAM" />
+
+        <LinearLayout
+            android:id="@+id/layoutInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubject">
+
+            <ImageView
+                android:id="@+id/ivQuestionIcon"
+                android:layout_width="@dimen/icon_size_small"
+                android:layout_height="@dimen/icon_size_small"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/questions"
+                android:src="@drawable/ic_question"
+                app:tint="?android:textColorSecondary" />
+
+            <TextView
+                android:id="@+id/tvQuestionCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/spacing_tiny"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="@dimen/text_size_small"
+                tools:text="20 Questions" />
+
+            <ImageView
+                android:id="@+id/ivTimerIcon"
+                android:layout_width="@dimen/icon_size_small"
+                android:layout_height="@dimen/icon_size_small"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:contentDescription="@string/timer"
+                android:src="@drawable/ic_timer"
+                android:visibility="gone"
+                app:tint="?android:textColorSecondary"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvTimeLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/spacing_tiny"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="@dimen/text_size_small"
+                android:visibility="gone"
+                tools:text="60 minutes"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutDeadline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutInfo"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/ivDeadlineIcon"
+                android:layout_width="@dimen/icon_size_small"
+                android:layout_height="@dimen/icon_size_small"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/deadline"
+                android:src="@drawable/ic_calendar"
+                app:tint="?android:textColorSecondary" />
+
+            <TextView
+                android:id="@+id/tvDeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/spacing_tiny"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="@dimen/text_size_small"
+                tools:text="Due: 25/12/2024 23:59" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</merge>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_adminHomeFragment_to_createTestFragment" type="id"/>
+    <item name="action_adminHomeFragment_to_assignTestFragment" type="id"/>
+    <item name="action_adminHomeFragment_to_createUserFragment" type="id"/>
+    <item name="action_adminHomeFragment_to_createSubjectFragment" type="id"/>
+    <item name="action_adminHomeFragment_to_createQuestionFragment" type="id"/>
+    <item name="action_adminHomeFragment_to_adminMetricsFragment" type="id"/>
+    <item name="action_adminHomeFragment_to_testListFragment" type="id"/>
+    <item name="action_adminHomeFragment_to_resultsFragment" type="id"/>
+    <item name="action_selectTestFragment_to_selectUsersFragment" type="id"/>
+
+    <item name="action_homeFragment_to_testListFragment" type="id"/>
+    <item name="action_homeFragment_to_resultsFragment" type="id"/>
+    <item name="action_homeFragment_to_createTestFragment" type="id"/>
+    <item name="action_homeFragment_to_assignTestFragment" type="id"/>
+    <item name="action_homeFragment_to_createUserFragment" type="id"/>
+    <item name="action_homeFragment_to_createSubjectFragment" type="id"/>
+    <item name="action_homeFragment_to_adminMetricsFragment" type="id"/>
+    <item name="action_homeFragment_to_settingsFragment" type="id"/>
+</resources>

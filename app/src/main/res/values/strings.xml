@@ -268,7 +268,7 @@
     <string name="app_tagline">Domina tu conocimiento</string>
 
     <string name="admin_home_welcome">Bienvenido, Administrador</string>
-    <string name="admin_home_subtitle">Gestiona exámenes, usuarios y supervisa el rendimiento</string>
+    <string name="admin_home_subtitle"></string>
     <string name="admin_home_quick_actions">Acciones rápidas</string>
     <string name="admin_home_create_test">Crear examen</string>
     <string name="admin_home_create_question">Crear pregunta</string>
